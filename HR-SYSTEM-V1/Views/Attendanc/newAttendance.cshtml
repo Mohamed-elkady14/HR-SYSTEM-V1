@@ -1,0 +1,76 @@
+﻿@model HR_SYSTEM_V1.Models.Attendance
+
+@{
+    SelectList employee = new SelectList(ViewBag.employees,"Emp_Id","Name");
+}
+
+<br><br><br>
+<div class="card-header">
+  <div class="card-title-wrap bar-success">
+    <h4 class="card-title">Request A Form</h4>
+  </div>
+</div>
+
+<hr />
+<div class="card-body">
+  <div class="px-3">
+      <div asp-validation-summary=All class="text-danger"></div>
+    <form class="form form-horizontal" asp-action="newAttendance" asp-route-id="@Model.Attend_Id">
+      <div class="form-body">
+        <div class="form-group row">
+          <label class="col-md-3 label-control" for="projectinput7">Employee Name : </label>
+          <div class="col-md-9">
+            <select asp-for="Emp_Id" asp-items="employee" class="form-control">
+            </select>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-md-3 label-control" for="projectinput9">Date: </label>
+          <div class="col-md-9">
+            <div class="position-relative has-icon-left">
+              <input type="date" class="form-control" asp-for="Day_Date">
+              <div class="form-control-position">
+                <i class="ft-message-square"></i>
+              </div>
+            </div>
+            <span asp-validation-for="Day_Date" class="text-danger"></span>
+          </div>
+        </div>
+      </div>
+      <div class=" row">
+        <div class="col-md-12">
+          <div class=" row form-group">
+            <label class="col-md-3 label-control">Start time: </label>
+            <div class="position-relative has-icon-left col-lg-9">
+              <input type="time" asp-for="StartTimeWork" class="form-control">
+              <div class="form-control-position">
+                <i class="ft-clock"></i>
+              </div>
+            </div>
+            <span asp-validation-for="StartTimeWork" class="text-danger"></span>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class=" row form-group">
+            <label class="col-md-3 label-control">End time: </label>
+            <div class="position-relative has-icon-left col-lg-9">
+              <input type="time" asp-for="EndTimeWork" class="form-control">
+              <div class="form-control-position">
+                <i class="ft-clock"></i>
+              </div>
+            </div>
+            <span asp-validation-for="EndTimeWork" class="text-danger"></span>
+          </div>
+        </div>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn btn-danger mr-1">
+          <i class="icon-trash"></i> Cancel
+        </button>
+        <button type="submit" class="btn btn-success">
+          <i class="icon-note"></i> Save
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
